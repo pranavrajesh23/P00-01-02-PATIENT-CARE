@@ -20,6 +20,21 @@ void registeredPatient()
     }
 }
 
+void needMedication()
+{
+    cout<<"\nDoes the patient need medication? (yes/no): \n";
+    string medication;
+    cin>>medication;
+    if(medication == "yes")
+    {
+        cout<<"\nGives the patient prescription\n";
+    }
+    else
+    {
+        cout<<"\nNo medication needed.\n";
+    }
+}
+
 void followupDoctor()
 {
     cout<<"\nNeed for follow-up? (yes/no): \n";
