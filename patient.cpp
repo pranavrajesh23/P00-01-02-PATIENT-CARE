@@ -1,12 +1,59 @@
 #include<iostream>
 using namespace std;
-
-bool registeredPatient()
+void availableNurse();  
+void registeredPatient()
 {
     string reg;
     cout<<"\nIs the patient registered? (yes/no): \n";
     cin>>reg;
-    return reg == "yes";
+    if(reg == "yes")
+    {
+        cout<<"\nPatient is registered.\n";
+        cout<<"\nChecking for available nurse...\n";
+        availableNurse();
+    }
+    else
+    {
+        cout<<"\nPatient is not registered.\n";
+        cout<<"\nPlease register the patient.\n";
+        registeredPatient();
+    }
+}
+
+void followupDoctor()
+{
+    cout<<"\nNeed for follow-up? (yes/no): \n";
+    string followup;
+    cin>>followup;
+    if(followup == "yes")
+    {
+        cout<<"\nAppointment has been arranged for the patient.\n";
+        needMedication();
+    }
+    else
+    {
+        cout<<"\nNo follow-up needed.\n";
+        needMedication();
+    }
+}
+
+void availableDoctor()
+{
+    cout<<"\nIs the doctor available?(yes/no)\n";
+    string doctor;
+    cin>>doctor;
+    if(doctor=="yes")
+    {
+        cout<<"\nDoctor is available.\n";
+        cout<<"\nAssing patient to doctor.\n";
+        followupDoctor();
+    }     
+    else
+    {
+        cout<<"\nDoctor is not available.\n";
+        cout<<"\nPlease wait for the doctor to be available.\n";
+        availableDoctor();
+    }                 
 }
 
 void availableNurse()
@@ -16,9 +63,9 @@ void availableNurse()
     cin>>nurse;
     if(nurse=="yes")
     {
-        cout<<"\n Nurse is available.\n";
+        cout<<"\nNurse is available.\n";
         cout<<"\nNurse is recodring the patient conditions.\n";
-        // availableDoctor();
+        availableDoctor();
     }     
     else
     {
@@ -32,16 +79,18 @@ void availableNurse()
 int main()
 {
     cout<<"\nPatient arrives\n";
-    if(registeredPatient())
-    {
-        cout<<"\nPatient is registered.\n";
-        cout<<"\nChecking for available nurse...\n";
-        availableNurse();
-    }
-    else
-    {
-        cout<<"\nPatient is not registered.\n";
-        cout<<"\nPlease register the patient.\n";
-        registeredPatient();
-    }
+    // if(registeredPatient())
+    // {
+    //     cout<<"\nPatient is registered.\n";
+    //     cout<<"\nChecking for available nurse...\n";
+    //     availableNurse();
+    // }
+    // else
+    // {
+    //     cout<<"\nPatient is not registered.\n";
+    //     cout<<"\nPlease register the patient.\n";
+    //     registeredPatient();
+    // }
+    registeredPatient();
+    cout<<"\nPatient leaves\n";
 }
